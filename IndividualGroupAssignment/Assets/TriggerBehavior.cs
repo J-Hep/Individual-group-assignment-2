@@ -16,6 +16,9 @@ public class TriggerBehavoiour : MonoBehaviour
         
     }
 
+
+    private Color colorA =  Color.blue;
+        
     void OnTriggerEnter(Collider gate)
     {
         Renderer render = GetComponent<Renderer>();
