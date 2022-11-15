@@ -22,5 +22,7 @@ public class GyroRotation : MonoBehaviour
     {
         Debug.Log("Rotation: " + Input.acceleration);
         transform.Rotate(0, -Input.gyro.rotationRateUnbiased.y, 0);
+        //transform.position += Input.gyro.rotationRateUnbiased;
+        transform.position += transform.forward * Input.gyro.rotationRateUnbiased.magnitude * 1f;
     }
 }

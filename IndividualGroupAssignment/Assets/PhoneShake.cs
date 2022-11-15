@@ -25,12 +25,11 @@ public class PhoneShake : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_gyro.attitude);
-        Debug.Log(Input.gyro.attitude + " input");
+        Debug.Log(Input.gyro.rotationRateUnbiased+ " input");
         if (Input.acceleration.sqrMagnitude >= sqrShakeDetectionThreshold
             && Time.unscaledTime >= timeSinceLastShake + minShakeInterval)
         {
-            MoveCar(Input.acceleration);
+            MoveCar(Input.gyro.rotationRateUnbiased);
             timeSinceLastShake = Time.unscaledTime;
         }
     }
@@ -38,6 +37,6 @@ public class PhoneShake : MonoBehaviour
     public void MoveCar(Vector3 deviceAccel)
     {
         Debug.Log("Shake: " + deviceAccel * shakeForce);
-        carRB.AddForce(transform.forward * deviceAccel.magnitude * shakeForce);
+        carRB.AddForce(transform.forward * deviceAccel.magnitude * shakeForce, ForceMode.Impulse);
     }
 }
