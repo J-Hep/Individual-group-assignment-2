@@ -41,8 +41,12 @@ public class TriggerBehavior : MonoBehaviour
     {
         Renderer render = GetComponent<Renderer>();
         colorA = render.material.color;
-        render.material.color = Color.green;
+        render.material.color = Color.blue;
         gateFlag = true;
+
+        print("WINNER");
+        Debug.Log("WINNER");
+
     }
 
 
